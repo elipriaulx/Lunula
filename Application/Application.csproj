@@ -106,6 +106,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behaviours\BindableSelectedItemBehaviour.cs" />
     <Compile Include="Components\DomainExplorerItem.cs" />
     <Compile Include="Services\CommandParameterServiceProvider.cs" />
     <Compile Include="Services\WorkspaceManagementServiceProvider.cs" />

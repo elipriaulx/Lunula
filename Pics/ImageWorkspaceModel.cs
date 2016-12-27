@@ -150,6 +150,12 @@ namespace Lunula.Modules.Pics
             set { SetValue(() => ShowDomainExplorer, value); }
         }
 
+        public IExplorerAction DomainExplorerSelectedItem
+        {
+            get { return GetValue(() => DomainExplorerSelectedItem); }
+            set { SetValue(() => DomainExplorerSelectedItem, value); }
+        }
+
         public IEnumerable<IExplorerAction> DomainExplorerItems
         {
             get { return GetValue(() => DomainExplorerItems); }

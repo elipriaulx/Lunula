@@ -45,7 +45,7 @@ namespace Lunula.Application.ViewModels
             OnLoadedCommand = new DelegateCommand(OnLoaded);
             DomainExplorerSelectionChangedCommand = new DelegateCommand<IExplorerAction>(x =>
             {
-                Debug.WriteLine($"Performing Action on selection. {x.Name}");
+                Debug.WriteLine($"Performing Action on selection. {x?.Name}");
                 x?.Task?.Invoke();
             });
 

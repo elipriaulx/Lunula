@@ -16,8 +16,10 @@ namespace Lunula.Extensibilitiy.Workspace
         // void Dispose();
 
         void Refresh();
-        
+
         bool ShowDomainExplorer { get; set; }
+
+        IExplorerAction DomainExplorerSelectedItem { get; set; }
         IEnumerable<IExplorerAction> DomainExplorerItems { get; }
 
         IEnumerable<IContextAction> PerpetualContextActions { get; }
