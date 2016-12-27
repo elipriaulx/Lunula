@@ -145,14 +145,14 @@ namespace Lunula.Application.ViewModels
                                         Name = "New",
                                         Description = "Start a new project.",
                                         Enabled = true,
-                                        Task = null,
-                                        Image = ImageAwesome.CreateImageSource(FontAwesomeIcon.Asterisk, new SolidColorBrush(Colors.IndianRed))
+                                        Task = OnLoaded,
+                                        Image = ImageAwesome.CreateImageSource(FontAwesomeIcon.Asterisk, new SolidColorBrush(Colors.Orange))
                                     }
                                 };
 
                                 WorkspaceModel = null;
                             },
-                            Image = ImageAwesome.CreateImageSource(FontAwesomeIcon.Asterisk, new SolidColorBrush(Colors.IndianRed))
+                            Image = ImageAwesome.CreateImageSource(FontAwesomeIcon.Close, new SolidColorBrush(Colors.IndianRed))
                         }
                     };
 
@@ -179,8 +179,8 @@ namespace Lunula.Application.ViewModels
                         Name = "New Project",
                         Description = "Start a new project.",
                         Enabled = true,
-                        Task = null,
-                        Image = ImageAwesome.CreateImageSource(FontAwesomeIcon.Asterisk, new SolidColorBrush(Colors.White))
+                        Task = OnLoaded,
+                        Image = ImageAwesome.CreateImageSource(FontAwesomeIcon.Asterisk, new SolidColorBrush(Colors.Orange))
                     }
                 };
 
