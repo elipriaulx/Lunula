@@ -2,7 +2,7 @@
 
 namespace Lunula.Extensibilitiy.Workspace
 {
-    public interface IFileActioner
+    public interface IInitialisationActioner
     {
         Guid Id { get; }
         string Name { get; }

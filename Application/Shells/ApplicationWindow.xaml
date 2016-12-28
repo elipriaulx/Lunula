@@ -160,7 +160,7 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-                    <ItemsControl ItemsSource="{Binding PerpetualContextActions}">
+                    <ItemsControl ItemsSource="{Binding ShellContextActions}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Horizontal" />

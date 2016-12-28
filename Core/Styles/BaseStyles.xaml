@@ -26,6 +26,7 @@
     <SolidColorBrush x:Key="WorkspaceSplitterBarBackgroundColour" Color="#ff282828" />
     <SolidColorBrush x:Key="WorkspaceSplitterBarForegroundColour" Color="#ffcececf" />
     <SolidColorBrush x:Key="WorkspaceBackgroundColour" Color="#ff2b2b2b"/>
+    <SolidColorBrush x:Key="WorkspaceForegroundColour" Color="#ffadadad"/>
 
     <SolidColorBrush x:Key="ActionBarBackgroundColour" Color="#ff313335"/>
     <SolidColorBrush x:Key="ActionBarForegroundColour" Color="#ffbbbbbb"/>

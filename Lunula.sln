@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26014.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{B7A86F68-95D2-4B68-B7DE-C38B8C5DA2B8}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensibilitiy", "Extensibilitiy\Extensibilitiy.csproj", "{389BB288-CCFE-4B67-8461-7184C2420327}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pics", "Pics\Pics.csproj", "{F4A8D45B-D88E-45B5-9979-36ADAEDE04EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Startup", "Startup\Startup.csproj", "{9E242B59-5CFE-4EEC-87AD-84679B46A40E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,11 +37,16 @@ Global
 		{F4A8D45B-D88E-45B5-9979-36ADAEDE04EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4A8D45B-D88E-45B5-9979-36ADAEDE04EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4A8D45B-D88E-45B5-9979-36ADAEDE04EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E242B59-5CFE-4EEC-87AD-84679B46A40E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E242B59-5CFE-4EEC-87AD-84679B46A40E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E242B59-5CFE-4EEC-87AD-84679B46A40E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E242B59-5CFE-4EEC-87AD-84679B46A40E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F4A8D45B-D88E-45B5-9979-36ADAEDE04EA} = {AE862DCF-7E90-4B1D-8437-C4A362371F1F}
+		{9E242B59-5CFE-4EEC-87AD-84679B46A40E} = {AE862DCF-7E90-4B1D-8437-C4A362371F1F}
 	EndGlobalSection
 EndGlobal

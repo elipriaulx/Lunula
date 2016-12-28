@@ -4,9 +4,14 @@ namespace Lunula.Extensibilitiy.Workspace
 {
     public interface IWorkspaceManagementService
     {
-        void RegisterLoader<T>(ILoader<T> loader);
-        ILoader<T> GetLoader<T>();
-        bool RegisterTransformer<T>(IFileTransformer<T> fileTransformer);
-        IEnumerable<IFileLoader> GetLoaders(string extension);
+        void SetStartupFactory(IWorkspaceFactory workspaceFactory);
+
+        void RegisterLoader<T>(IInitialisationLoader<T> initialisationLoader);
+        bool RegisterTransformer<T>(IInitialisationTransformer<T> initialisationTransformer);
+
+        IWorkspaceFactory GetStartupWorkspaceFactory();
+
+        IInitialisationLoader<T> GetLoader<T>();
+        IEnumerable<IInitialisationLoader> GetLoaders(string extension);
     }
 }

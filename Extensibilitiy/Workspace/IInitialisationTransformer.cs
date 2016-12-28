@@ -1,13 +1,12 @@
 ﻿namespace Lunula.Extensibilitiy.Workspace
 {
-    public interface IFileTransformer : IFileActioner
+    public interface IInitialisationTransformer : IInitialisationActioner
     {
         
     }
 
-    public interface IFileTransformer<T> : IFileTransformer
+    public interface IInitialisationTransformer<T> : IInitialisationTransformer
     {
-
         void SetUpWorkspace(T data);
     }
 }

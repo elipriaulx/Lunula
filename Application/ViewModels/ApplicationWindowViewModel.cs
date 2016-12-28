@@ -91,10 +91,34 @@ namespace Lunula.Application.ViewModels
             set { SetValue(() => DomainExplorerSelectionChangedCommand, value); }
         }
 
-        public IEnumerable<IContextAction> PerpetualContextActions
+        public IEnumerable<IContextAction> ShellContextActions
         {
-            get { return GetValue(() => PerpetualContextActions); }
-            set { SetValue(() => PerpetualContextActions, value); }
+            get { return GetValue(() => ShellContextActions); }
+            set { SetValue(() => ShellContextActions, value); }
+        }
+
+        private void ClearWorkspace()
+        {
+            WorkspaceModel = null;
+
+            _regionManager.RequestNavigate("WorkspaceRegion", nameof(EmptyWorkspacePage));
+        }
+
+        private void SetQuickstartWorkspace(string file = null)
+        {
+            var newWorkspaceFactory = _derpService.GetStartupWorkspaceFactory();
+
+            try
+            {
+                WorkspaceModel = newWorkspaceFactory?.GetWorkspace(file);
+            }
+            catch (Exception e)
+            {
+                _logger.Error("Unable to load setup work.");
+                _logger.Error(e);
+            }
+
+            if (WorkspaceModel == null) ClearWorkspace();
         }
 
         private void OnLoaded()
@@ -111,50 +135,7 @@ namespace Lunula.Application.ViewModels
 
                 try
                 {
-                    var loaders = _derpService.GetLoaders(fileExtension.Replace(".", ""));
-
-                    var loader = loaders.FirstOrDefault();
-                    var transformer = loader?.GetTransformers().FirstOrDefault();
-
-                    WorkspaceModel = loader?.Load(filePath, transformer);
-
-                    PerpetualContextActions = new List<IContextAction>
-                    {
-                        new QuickContaxtAction
-                        {
-                            Id = new Guid(),
-                            Name = "Save",
-                            Description = "Save a project.",
-                            Enabled = true,
-                            Task = () => { WorkspaceModel?.Save(); },
-                            Image = ImageAwesome.CreateImageSource(FontAwesomeIcon.FloppyOutline, new SolidColorBrush(Colors.CornflowerBlue))
-                        },
-                        new QuickContaxtAction
-                        {
-                            Id = new Guid(),
-                            Name = "Close",
-                            Description = "Close this project.",
-                            Enabled = true,
-                            Task = () =>
-                            {
-                                PerpetualContextActions = new List<IContextAction>
-                                {
-                                    new QuickContaxtAction
-                                    {
-                                        Id = new Guid(),
-                                        Name = "New",
-                                        Description = "Start a new project.",
-                                        Enabled = true,
-                                        Task = OnLoaded,
-                                        Image = ImageAwesome.CreateImageSource(FontAwesomeIcon.Asterisk, new SolidColorBrush(Colors.Orange))
-                                    }
-                                };
-
-                                WorkspaceModel = null;
-                            },
-                            Image = ImageAwesome.CreateImageSource(FontAwesomeIcon.Close, new SolidColorBrush(Colors.IndianRed))
-                        }
-                    };
+                    SetQuickstartWorkspace(filePath);
 
                 }
                 catch (Exception e)
@@ -163,67 +144,12 @@ namespace Lunula.Application.ViewModels
                     _logger.Error($"Failed Opening File [{filePath}].");
                     _logger.Error(e);
 
-                    _regionManager.RequestNavigate("WorkspaceRegion", nameof(EmptyWorkspacePage));
+                    ClearWorkspace();
                 }
             }
             else
             {
-                // Show Empty Workspace
-                _logger.Debug("No file etc specified.");
-
-                PerpetualContextActions = new List<IContextAction>
-                {
-                    new QuickContaxtAction
-                    {
-                        Id = new Guid(),
-                        Name = "New Project",
-                        Description = "Start a new project.",
-                        Enabled = true,
-                        Task = OnLoaded,
-                        Image = ImageAwesome.CreateImageSource(FontAwesomeIcon.Asterisk, new SolidColorBrush(Colors.Orange))
-                    }
-                };
-
-                _regionManager.RequestNavigate("WorkspaceRegion", nameof(EmptyWorkspacePage));
-            }
-        }
-
-        public class QuickContaxtAction : BaseViewModel, IContextAction
-        {
-            public Guid Id
-            {
-                get { return GetValue(() => Id); }
-                set { SetValue(() => Id, value); }
-            }
-
-            public bool Enabled
-            {
-                get { return GetValue(() => Enabled); }
-                set { SetValue(() => Enabled, value); }
-            }
-
-            public string Name
-            {
-                get { return GetValue(() => Name); }
-                set { SetValue(() => Name, value); }
-            }
-
-            public string Description
-            {
-                get { return GetValue(() => Description); }
-                set { SetValue(() => Description, value); }
-            }
-
-            public ImageSource Image
-            {
-                get { return GetValue(() => Image); }
-                set { SetValue(() => Image, value); }
-            }
-
-            public Action Task
-            {
-                get { return GetValue(() => Task); }
-                set { SetValue(() => Task, value); }
+                SetQuickstartWorkspace();
             }
         }
     }

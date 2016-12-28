@@ -6,16 +6,16 @@ using Prism.Regions;
 
 namespace Lunula.Modules.Pics.Transformers
 {
-    public class ImageFileFileTransformer : IFileTransformer<Image>
+    public class ImageInitialisationInitialisationTransformer : IInitialisationTransformer<Image>
     {
         private readonly IRegionViewRegistry _regionViewRegistry;
         private readonly IRegionManager _regionManager;
 
-        public ImageFileFileTransformer(IRegionViewRegistry regionViewRegistry, IRegionManager regionManager) : base()
+        public ImageInitialisationInitialisationTransformer(IRegionViewRegistry regionViewRegistry, IRegionManager regionManager) : base()
         {
             Id = Guid.NewGuid();
             Name = "Pics Transformer";
-            Description = "A fileTransformer for viewing image files.";
+            Description = "A initialisationTransformer for viewing image files.";
         
             _regionViewRegistry = regionViewRegistry;
             _regionManager = regionManager;

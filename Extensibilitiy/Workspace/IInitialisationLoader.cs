@@ -2,21 +2,18 @@
 
 namespace Lunula.Extensibilitiy.Workspace
 {
-    public interface IFileLoader : IFileActioner
+    public interface IInitialisationLoader : IInitialisationActioner
     {
         IEnumerable<string> Extentions { get; }
 
-        IEnumerable<IFileTransformer> GetTransformers();
+        IEnumerable<IInitialisationTransformer> GetTransformers();
 
-        IWorkspaceModel Load(string file, IFileTransformer fileTransformer);
+        IWorkspaceModel Load(string file, IInitialisationTransformer initialisationTransformer);
+        IWorkspaceModel New();
     }
 
-    public interface ILoader<T> : IFileLoader
+    public interface IInitialisationLoader<T> : IInitialisationLoader
     {
-        //T NewFile(string path);
-        //T LoadFile(string path);
-
-        void RegisterTransformer(IFileTransformer<T> fileTransformer);
-
+        void RegisterTransformer(IInitialisationTransformer<T> initialisationTransformer);
     }
 }
